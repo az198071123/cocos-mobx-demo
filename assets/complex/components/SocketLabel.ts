@@ -1,6 +1,6 @@
 import { observer, render } from "../../scripts/observer";
 import { computed } from "mobx";
-import { socket, canvas } from "../stores";
+import { socket, canvas } from "../stores/index";
 const { ccclass } = cc._decorator
 @ccclass
 @observer

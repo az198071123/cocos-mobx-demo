@@ -3,17 +3,21 @@
  */
 import { observer, react, reactor } from "../scripts/observer";
 import { action } from "mobx";
-import { store } from "./store";
+import { SimpleStore, stores } from "./store";
 @cc._decorator.ccclass
 @observer
 export default class TimePlugin extends cc.Component {
-    public onLoad() {
+    public get store() {
+        console.log('this.node.name', this.node.name);
+        return stores[Number(this.node.name)];
+    }
+    public start() {
         this.schedule(this.updateCurrentTime, 1)
     }
 
     // 定时修改 store.currentTime 数据
     @action updateCurrentTime() {
-        store.currentTime = Date.now()
+        this.store.currentTime = Date.now()
     }
 
     /**
@@ -21,16 +25,16 @@ export default class TimePlugin extends cc.Component {
      */
     @reactor
     protected reactorTimestamp() {
-        return react(() => store.timestamp, timestamp => {
+        return react(() => this.store.timestamp, timestamp => {
             if (timestamp) {//如果不是初始状态, 则total++
-                store.total++
+                this.store.total++
             }
         })
     }
-    @reactor(() => store.timestamp)
-    protected reactorTimestamp2(timestamp: number) {
-        if (timestamp) {
-            store.total++
-        }
-    }
+    // @reactor(() => store.timestamp)
+    // protected reactorTimestamp2(timestamp: number) {
+    //     if (timestamp) {
+    //         this.store.total++
+    //     }
+    // }
 }

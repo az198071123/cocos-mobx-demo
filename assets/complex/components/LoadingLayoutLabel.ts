@@ -1,6 +1,6 @@
 import { observer, reactor, react, render } from "../../scripts/observer";
 import { observable, action, computed } from "mobx";
-import { socket } from "../stores";
+import { socket } from "../stores/index";
 
 /**
  * 项目入口, 一般只是用来挂载一堆prefab, 并添加各种逻辑组建

@@ -1,5 +1,5 @@
 import { observer, reactor, react } from "../../scripts/observer";
-import { socket } from "../stores";
+import { socket } from "../stores/index";
 import LoadingLayoutLabel from "./LoadingLayoutLabel";
 const { ccclass, property } = cc._decorator
 @ccclass

@@ -1,4 +1,4 @@
-import { canvas } from "../stores";
+import { canvas } from "../stores/index";
 const { ccclass, property } = cc._decorator
 @ccclass
 export default class LoadingLayout extends cc.Component {

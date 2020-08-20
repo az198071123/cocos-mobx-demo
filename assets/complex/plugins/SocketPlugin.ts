@@ -1,5 +1,5 @@
 import { observer, react, reactor } from "../../scripts/observer";
-import { socket } from "../stores";
+import { socket } from "../stores/index";
 const sleep = (ms: number) => new Promise(x => setTimeout(x, ms))
 
 const { ccclass } = cc._decorator
